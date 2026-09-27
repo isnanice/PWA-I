@@ -1,9 +1,10 @@
 const NAV = ['Catalog', 'About', 'Contact']
 
-function Header({ tab, onTab }) {
+function Header({ tab, onTab, onInstall }) {
   return (
     <header className="header">
       <span className="brand display">Bore &amp; Barrel</span>
+
       <nav className="nav">
         {NAV.map((item) => (
           <button
@@ -15,6 +16,14 @@ function Header({ tab, onTab }) {
             {item}
           </button>
         ))}
+
+        <button
+          type="button"
+          className="install-btn"
+          onClick={onInstall}
+        >
+          Install App
+        </button>
       </nav>
     </header>
   )
