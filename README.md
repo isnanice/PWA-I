@@ -1,16 +1,46 @@
-# React + Vite
+# Bore & Barrel
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A dummy gunshop storefront built as a Progressive Web App. It runs offline
+with an app shell, a web app manifest, and a service worker, and uses React +
+Vite + Tailwind CSS.
 
-Currently, two official plugins are available:
+## Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev      # dev server with HMR
+```
 
-## React Compiler
+Other scripts:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm run build    # production build to dist/
+npm run preview  # serve the production build
+npm run lint     # oxlint
+```
 
-## Expanding the Oxlint configuration
+## Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```
+.
+├── index.html              # HTML shell
+├── vite.config.js          # Vite + vite-plugin-pwa (manifest + service worker)
+├── public/                 # static assets served at /
+│   ├── icon-192.png / icon-512.png / icon.svg
+│   └── guns/               # product images
+└── src/
+    ├── main.jsx            # entry, mounts <App/>
+    ├── App.jsx             # app shell: tab state, header/nav/content/footer
+    ├── App.css             # app shell styles
+    ├── index.css           # global styles
+    ├── components/
+    │   ├── Header.jsx      # brand + nav
+    │   ├── GunCard.jsx     # single product card
+    │   └── Footer.jsx
+    ├── data/
+    │   └── guns.js         # dummy product data
+    └── pages/
+        ├── Catalog.jsx     # product grid
+        ├── About.jsx
+        └── Contact.jsx
+```
